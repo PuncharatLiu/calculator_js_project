@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple calculator</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="calculator-container">
+	   
+		<!-- Display screen -->
+		<div class="display" id="display">0</div>
+		<!-- End -->
+		
+		
+		<!-- All button -->
+		<div class="all-button">
+
+
+			<div class="row">
+				<button class="button three-top-button">AC</button>
+				<button class="button three-top-button">DEL</button>
+				<button class="button three-top-button"onclick="updateDisplay('7')">%</button>
+				<button id="divide" class="button operator-button" onclick="updateDisplay('/')">&#247;</button>
+			</div>
+
+			
+			<div class="row">
+				<button class="button number-button" onclick="updateDisplay(7)">7</button>
+				<button class="button number-button" onclick="updateDisplay('8')">8</button>
+				<button class="button number-button" onclick="updateDisplay('9')">9</button>
+				<button id="multiply" class="button operator-button" onclick="updateDisplay('*')">&#215;</button>
+			</div>
+			
+			
+			<div class="row">
+				<button class="button number-button" onclick="updateDisplay('4')">4</button>
+				<button class="button number-button" onclick="updateDisplay('5')">5</button>
+				<button class="button number-button" onclick="updateDisplay('6')">6</button>
+				<button id="minus" class="button operator-button" onclick="updateDisplay('-')">&#8722;</button>
+			</div>
+			
+			
+			<div class="row">
+				<button class="button number-button" onclick="updateDisplay('1')">1</button>
+				<button class="button number-button" onclick="updateDisplay('2')">2</button>
+				<button class="button number-button" onclick="updateDisplay('3')">3</button>
+				<button id="plus" class="button operator-button" onclick="updateDisplay('+')">&#43;</button>
+			</div>
+			
+		
+			<div class="row">
+				<button class="button number-button zero" onclick="updateDisplay(0)">0</button>
+				<button class="button number-button" onclick="updateDisplay('.')">&#8226;</button>
+				<button class="button operator-button">&#61; </button>
+			</div>
+
+
+		</div>
+		<!-- End -->
+			
+		
+	</div>
+<script src="script.js"></script>
+</body>
+</html>
