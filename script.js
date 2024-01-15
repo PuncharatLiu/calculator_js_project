@@ -72,6 +72,8 @@ function checkOperatorSymbol() {
         isSymbol = true;
         // Used to calculate when the user clicks "=" 
         toCalculate = value;
+    } else {
+        isSymbol = false;
     }
 }
 
