@@ -15,4 +15,11 @@ function calculate(){
 	screen.innerText = result;
 	display = result;
 	return false;
+} 
+
+function allClear(){
+	display = "0";
+	screen.textContent = display;
+	return false;
 }
+
