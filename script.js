@@ -11,10 +11,13 @@ function updateDisplay(value){
 }
 
 function calculate(){
-	let result = eval(display);
-	screen.innerText = result;
-	display = result;
-	return false;
+	try {
+		let result = eval(display);
+		screen.innerText = result;
+		display = result;
+	} catch (error) {
+		screen.innerText = "Error";
+	}
 } 
 
 function allClear(){
@@ -23,3 +26,7 @@ function allClear(){
 	return false;
 }
 
+function deleteNumber(){
+	display = display.slice(0, -1);
+	screen.textContent = display;
+}
