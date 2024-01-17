@@ -13,18 +13,20 @@
 	<div class="calculator-container">
 	   
 		<!-- Display screen -->
-		<div class="display" id="display">0</div>
+		<div class="screen" >
+			<div class="history" id="history"></div>
+			<div class="display" id="display">0</div>
+		</div>
 		<!-- End -->
 		
 		
 		<!-- All button -->
 		<div class="all-button">
 
-
 			<div class="row">
 				<button class="button three-top-button" onclick="allClear()">AC</button>
 				<button class="button three-top-button" onclick="deleteNumber()">DEL</button>
-				<button class="button three-top-button"onclick="updateDisplay('7')">%</button>
+				<button class="button three-top-button"onclick="calculatePrecent()">%</button>
 				<button id="divide" class="button operator-button" onclick="updateDisplay('/')">&#247;</button>
 			</div>
 

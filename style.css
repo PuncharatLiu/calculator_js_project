@@ -7,18 +7,19 @@ body{
 
 }
 
-.display{
-	color:rgb(248, 248, 248);
-	height: 40px;
-	/* position: absolute; */
-	/* width: 100%; */
-	margin:135px 10px 0 10px;
-	padding:10px 10px;
-	display: flex;
-	align-items: center;
-	justify-content: right;
-	font-size: 70px;
+.screen{
+	padding: 70px 36px 0px 0px ;
+}
 
+.display{
+	font-size: 4rem;
+	text-align: right;
+}
+
+.history{
+	font-size: 2rem;
+	color: #c6c6c6;
+	text-align: right;
 }
 
 .calculator-container{
