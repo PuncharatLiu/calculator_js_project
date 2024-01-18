@@ -2,18 +2,28 @@ let hold = "0";
 let display = "0";
 let displayBackUp = "0";
 let firstClick = true;
-let screenHistory = document.getElementById("history");
-let screen = document.getElementById("display");
-let voidValue = ""
+let globalValue = ""
 let operator = ["+", "-", "*", "/"];
 let number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
+let isCalcuted = false;
+
+const screenHistory = document.getElementById("history");
+const screen = document.getElementById("display");
+
+
 function updateDisplay(value){
-	voidValue = value;
+	// copy the value
+	globalValue = value;
 	removeNumAfterOperator();
-	if (display === "0" && number.includes(voidValue)){
+	
+	// This codition run after click operator button 
+	if (display === "0" && number.includes(globalValue)){
+		
 		display = value;
+		
 		firstAssighSecondPush();
+
 	} else {
 		hideOperator();
 	}
@@ -22,18 +32,28 @@ function updateDisplay(value){
 	
 	
 	console.log(hold, display);
-	console.log(operator.includes(voidValue));
+	console.log(operator.includes(globalValue));
 
 
 }
 
+// ===== To calculate string in "hold" with eval(). by pressing "=" sign. ===== //
 function calculate(){
 	 try {
-	 
+		// Calculate and update result to screen.
 	 	let result = eval(hold);
 	 	screen.innerText = result;
-	 	displayHistory();
-	 	display = result.toString();
+	 	
+		// Show history to history's screen
+		displayHistory();
+	 	
+		// Convert result to string and reassign value to "display"
+		display = result.toString();
+
+		// Affer calculate "DEL" work as "AC"
+		isCalcuted = true;
+	
+	// If enter invalid expression show "Error"
 	 } catch (error) {
 		screen.innerText = "Error";
 	}
@@ -54,9 +74,24 @@ function allClear(){
 }
 
 function deleteNumber(){
-	let delateLastNumber =  hold.slice(0, -1);
-	hold = delateLastNumber;
-	screen.textContent = hold;
+	if (!isCalcuted){
+		// Delete last character and store in "display".
+		let delateLastNumber =  display.slice(0, -1);
+		display = delateLastNumber;
+		
+		// Show removed to screen
+		screen.textContent = display;
+	
+	// After calculate "DEL" work as "AC"
+	} else {
+		// Use the same function
+		allClear();
+		
+		// Set it to defualt value
+		// Mean, can use "DEL"
+		isCalcuted = true;
+	}
+
 }
 
 function calculatePrecent(){
@@ -65,20 +100,20 @@ function calculatePrecent(){
 }
 
 function hideOperator(){
-	let isOperator = operator.includes(voidValue);
+	let isOperator = operator.includes(globalValue);
 	
 	if (isOperator) {
-		// hold += voidValue;
+		// hold += globalValue;
 		changeOperator();
 
 	} else {
-		display += voidValue;
+		display += globalValue;
 		hold += display[1];
 	}
 }
 
 function removeNumAfterOperator(){
-	let isOperator = operator.includes(voidValue);
+	let isOperator = operator.includes(globalValue);
 	if (isOperator) {
 		
 		if (firstClick) {
@@ -95,7 +130,7 @@ function removeNumAfterOperator(){
 }
 
 function switchDisplay (){
-	let isOperator = operator.includes(voidValue);
+	let isOperator = operator.includes(globalValue);
 	if (isOperator) {
 		screen.textContent = displayBackUp;
 		console.log("yes")
@@ -106,20 +141,22 @@ function switchDisplay (){
 
 function firstAssighSecondPush (){
 	if (firstClick){
-		hold = voidValue;
+		hold = globalValue;
+		// set false, Don't use this condition agian.
 		firstClick = false;
+	// If 
 	} else {
-		hold += voidValue;
+		hold += globalValue;
 	}
 }
 
 function changeOperator(){
 	if (operator.includes(hold.slice(-1))) {
-		console.log("there's operator")
 		hold = hold.slice(0, 1);
-		hold += voidValue;
+		hold += globalValue;
 	} else {
-		hold += voidValue;
+		hold += globalValue;
 		console.log("else")
 	}
 }
+
