@@ -68,7 +68,9 @@ function hideOperator(){
 	let isOperator = operator.includes(voidValue);
 	
 	if (isOperator) {
-		hold += voidValue;
+		// hold += voidValue;
+		changeOperator();
+
 	} else {
 		display += voidValue;
 		hold += display[1];
@@ -78,8 +80,16 @@ function hideOperator(){
 function removeNumAfterOperator(){
 	let isOperator = operator.includes(voidValue);
 	if (isOperator) {
-		displayBackUp = display;
+		
+		if (firstClick) {
+			displayBackUp = display;
+		} else if (display !== "0" && !firstClick) {
+			displayBackUp = display;
+		}
+		
+		// displayBackUp = display;
 		display = "0";
+		firstClick = false;
 	}
 	// screen.textContent = displayBackUp
 }
@@ -100,5 +110,16 @@ function firstAssighSecondPush (){
 		firstClick = false;
 	} else {
 		hold += voidValue;
+	}
+}
+
+function changeOperator(){
+	if (operator.includes(hold.slice(-1))) {
+		console.log("there's operator")
+		hold = hold.slice(0, 1);
+		hold += voidValue;
+	} else {
+		hold += voidValue;
+		console.log("else")
 	}
 }
